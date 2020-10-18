@@ -29,6 +29,7 @@
     "sort-imports": [
       "error",
       { "ignoreDeclarationSort": true, "ignoreCase": true }
-    ]
+    ],
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 }

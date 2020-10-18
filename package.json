@@ -1,11 +1,11 @@
 {
-  "name": "rtl-selector",
-  "version": "1.0.0",
+  "name": "testing-library-selector",
+  "version": "0.1.0",
   "description": "selectors for react testing library",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/domasx2/rtl-selector",
+  "repository": "https://github.com/domasx2/testing-library-selector",
   "license": "MIT",
   "keywords": [],
   "scripts": {
@@ -42,9 +42,15 @@
     "node": ">=10"
   },
   "dependencies": {},
+  "peerDependencies": {
+    "@testing-library/dom": "^7.26.0"
+  },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@testing-library/dom": "^7.26.0",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "ava": "^3.12.1",
@@ -61,6 +67,9 @@
     "nyc": "^15.1.0",
     "open-cli": "^6.0.1",
     "prettier": "^2.1.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "release-it": "^14.2.0",
     "standard-version": "^9.0.0",
     "ts-node": "^9.0.0",
     "typedoc": "^0.19.0",
