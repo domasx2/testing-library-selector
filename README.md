@@ -20,9 +20,9 @@ test('using vanilla queries', async () => {
   userEvent.click(submitButton);
 
   await screen.findByText('Welcome, Bob!');
-  expect(screen.getByLabelText('Username')).not.toBeInDocument();
-  expect(screen.getByLabelText('Password')).not.toBeInDocument();
-  expect(screen.getByRole('button', { name: 'Log in' })).not.toBeInDocument();
+  expect(screen.queryByLabelText('Username')).not.toBeInDocument();
+  expect(screen.queryByLabelText('Password')).not.toBeInDocument();
+  expect(screen.queryByRole('button', { name: 'Log in' })).not.toBeInDocument();
 });
 
 test('using testing-library-selector', async () => {
@@ -36,7 +36,7 @@ test('using testing-library-selector', async () => {
   const usernameInput = await page.username.find();
   const passwordInput = await page.password.find();
   const submitButton = await page.submit.find();
-  expect(page.welcomeMessage.get()).not.toBeInDocument();
+  expect(page.welcomeMessage.query()).not.toBeInDocument();
 
   expect(submitButton).toBeDisabled();
   userEvent.type(usernameInput, 'bob');
@@ -45,8 +45,8 @@ test('using testing-library-selector', async () => {
   userEvent.click(submitButton);
 
   await page.welcomeMessage.find();
-  expect(page.username.get()).not.toBeInDocument();
-  expect(page.username.get()).not.toBeInDocument();
+  expect(page.username.query()).not.toBeInDocument();
+  expect(page.username.query()).not.toBeInDocument();
 });
 ```
 
