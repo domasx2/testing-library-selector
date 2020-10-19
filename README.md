@@ -2,6 +2,15 @@
 
 Selectors for @testing-library. Define selectors for ui items that can be reused inside the same test or between tests. Full typescript support.
 
+## Install
+
+```sh
+npm install --save-dev testing-library-selector
+yarn add -D testing-library-selector
+```
+
+## Usage
+
 ```javascript
 import { screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -50,7 +59,7 @@ test('using testing-library-selector', async () => {
 });
 ```
 
-# Scoping to element
+## Scoping to element
 
 By default elements will be scoped to `screen`, but `.get`, `.find`, and other methods accept a container param:
 
