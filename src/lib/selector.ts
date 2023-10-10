@@ -43,24 +43,24 @@ type RTLSelector<ElType extends HTMLElement = HTMLElement> = {
   readonly getAll: (container?: HTMLElement) => readonly ElType[];
   readonly find: (
     container?: HTMLElement,
-    waitForOptions?: waitForOptions
+    waitForOptions?: waitForOptions,
   ) => Promise<ElType>;
   readonly findAll: (
     container?: HTMLElement,
-    waitForOptions?: waitForOptions
+    waitForOptions?: waitForOptions,
   ) => Promise<readonly ElType[]>;
   readonly query: (container?: HTMLElement) => ElType | null;
   readonly queryAll: (container?: HTMLElement) => readonly ElType[];
 };
 
 function makeRTLSelector<ElType extends HTMLElement = HTMLElement>(
-  selection: Selection
+  selection: Selection,
 ): RTLSelector<ElType> {
   // too lazy to list out all combinations... macros would come in handy here!
   const exec = (
     type: 'get' | 'getAll' | 'find' | 'findAll' | 'query' | 'queryAll',
     waitForOptions?: waitForOptions,
-    container?: HTMLElement
+    container?: HTMLElement,
   ):
     | ElType
     | readonly ElType[]
@@ -101,14 +101,14 @@ function makeRTLSelector<ElType extends HTMLElement = HTMLElement>(
 
 export function byRole<ElType extends HTMLElement = HTMLElement>(
   role: ByRoleMatcher,
-  options?: ByRoleOptions
+  options?: ByRoleOptions,
 ): RTLSelector<ElType> {
   return makeRTLSelector({ query: 'ByRole', matcher: role, options });
 }
 
 export function byText<ElType extends HTMLElement = HTMLElement>(
   id: Matcher,
-  options?: SelectorMatcherOptions
+  options?: SelectorMatcherOptions,
 ): RTLSelector<ElType> {
   return makeRTLSelector({ query: 'ByText', matcher: id, options });
 }
@@ -116,7 +116,7 @@ export function byText<ElType extends HTMLElement = HTMLElement>(
 export function byBoundAttribute<ElType extends HTMLElement = HTMLElement>(
   attribute: BoundAttribute,
   id: Matcher,
-  options?: MatcherOptions
+  options?: MatcherOptions,
 ): RTLSelector<ElType> {
   return makeRTLSelector({
     query: 'ByBoundAttribute',
@@ -128,42 +128,42 @@ export function byBoundAttribute<ElType extends HTMLElement = HTMLElement>(
 
 export function byLabelText<ElType extends HTMLElement = HTMLElement>(
   id: Matcher,
-  options?: SelectorMatcherOptions
+  options?: SelectorMatcherOptions,
 ): RTLSelector<ElType> {
   return makeRTLSelector({ query: 'ByLabelText', matcher: id, options });
 }
 
 export function byAltText<ElType extends HTMLElement = HTMLElement>(
   id: Matcher,
-  options?: MatcherOptions
+  options?: MatcherOptions,
 ): RTLSelector<ElType> {
   return byBoundAttribute<ElType>('AltText', id, options);
 }
 
 export function byDisplayValue<ElType extends HTMLElement = HTMLElement>(
   id: Matcher,
-  options?: MatcherOptions
+  options?: MatcherOptions,
 ): RTLSelector<ElType> {
   return byBoundAttribute<ElType>('DisplayValue', id, options);
 }
 
 export function byTestId<ElType extends HTMLElement = HTMLElement>(
   id: Matcher,
-  options?: MatcherOptions
+  options?: MatcherOptions,
 ): RTLSelector<ElType> {
   return byBoundAttribute<ElType>('TestId', id, options);
 }
 
 export function byPlaceholderText<ElType extends HTMLElement = HTMLElement>(
   id: Matcher,
-  options?: MatcherOptions
+  options?: MatcherOptions,
 ): RTLSelector<ElType> {
   return byBoundAttribute<ElType>('PlaceholderText', id, options);
 }
 
 export function byTitle<ElType extends HTMLElement = HTMLElement>(
   id: Matcher,
-  options?: MatcherOptions
+  options?: MatcherOptions,
 ): RTLSelector<ElType> {
   return byBoundAttribute<ElType>('Title', id, options);
 }
